@@ -17,7 +17,7 @@ function getInformation(url) {
 }
 
 function showAllInformation(info) {
-	console.log(info);
+	document.querySelector("tbody").textContent = "";
 	for (let user of info) {
 		createTableRows(user);
 	}
@@ -44,7 +44,7 @@ function showCurrentInformation(info, nameOfUser) {
 	let numberOfFoundUsers = 0;
 	document.querySelector("tbody").textContent = "";
 	for (let user of info) {
-		if (nameOfUser.trim() == `${user.name.first} ${user.name.last}`) {
+		if (`${user.name.first} ${user.name.last}`.toLowerCase().indexOf(nameOfUser.trim().toLowerCase()) == 0) {
 			createTableRows(user);
 			numberOfFoundUsers++;
 		}
